@@ -22,6 +22,15 @@ include_directories(/usr/local/protobuf/include)
 
 include_directories(/home/ubuntu/projects/ultraServer/ultra)
 
+include_directories(${PROJECT_SOURCE_DIR}/src/include)
+include_directories(${PROJECT_SOURCE_DIR}/example)
+
+link_directories(${PROJECT_SOURCE_DIR}/lib)
+
+
+add_subdirectory(src)
+
+
 
 set(TEST_LIB_SRC
         test/test.pb.cc)
