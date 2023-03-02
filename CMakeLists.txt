@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 project(upRPC)
 
+include (cmake/utils.cmake)
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
 # 指定编译选项
 set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -std=c++11 -O0 -ggdb -Wall -Werror")
 
@@ -16,11 +18,32 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic -fPIC")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-function -Wno-builtin-macro-redefined -Wno-deprecated -Wno-deprecated-declarations")
 
 
-
-
-add_executable(upRPC test/test_ultra.cpp)
+include_directories(/usr/local/protobuf/include)
 
 include_directories(/home/ubuntu/projects/ultraServer/ultra)
-target_link_libraries(upRPC /home/ubuntu/projects/ultraServer/lib/libultra.so pthread protobuf dl yaml-cpp)
+
+
+set(TEST_LIB_SRC
+        test/test.pb.cc)
+
+add_library(test1 SHARED ${TEST_LIB_SRC})
+
+
+
+set(LIBS
+        /home/ubuntu/projects/ultraServer/lib/libultra.so
+        protobuf
+        pthread
+        dl
+        yaml-cpp
+        )
+
+
+ultra_add_executable(test_ultra "test/test_ultra.cpp" test1 "${LIBS}")
+
+
+add_executable(test_proto test/test_proto.cpp test/test.pb.cc)
+
+target_link_libraries(test_proto /home/ubuntu/projects/ultraServer/lib/libultra.so pthread protobuf dl yaml-cpp)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

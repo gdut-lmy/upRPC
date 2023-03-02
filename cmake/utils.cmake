@@ -7,7 +7,7 @@
 # so we'd better overwirte it with filename.
 function(force_redefine_file_macro_for_sources targetname)
     get_target_property(source_files "${targetname}" SOURCES)
-    foreach(sourcefile ${source_files})
+    foreach (sourcefile ${source_files})
         # Get source file's current list of compile definitions.
         get_property(defs SOURCE "${sourcefile}"
                 PROPERTY COMPILE_DEFINITIONS)
@@ -20,13 +20,13 @@ function(force_redefine_file_macro_for_sources targetname)
                 SOURCE "${sourcefile}"
                 PROPERTY COMPILE_DEFINITIONS ${defs}
         )
-    endforeach()
+    endforeach ()
 endfunction()
 
 # wrapper for add_executable
 function(ultra_add_executable targetname srcs depends libs)
     add_executable(${targetname} ${srcs})
     add_dependencies(${targetname} ${depends})
-    force_redefine_file_macro_for_sources(${targetname})
+#[[    force_redefine_file_macro_for_sources(${targetname})]]
     target_link_libraries(${targetname} ${libs})
 endfunction()
