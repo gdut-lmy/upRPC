@@ -57,3 +57,6 @@ add_executable(test_proto test/test_proto.cpp test/test.pb.cc)
 target_link_libraries(test_proto /home/ubuntu/projects/ultraServer/lib/libultra.so pthread protobuf dl yaml-cpp)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
+# 设置项目库文件输出的路径
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

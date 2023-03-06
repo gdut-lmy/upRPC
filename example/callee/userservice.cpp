@@ -18,8 +18,7 @@ public:
 
     bool Register(uint32_t id, std::string name, std::string pwd) {
         ULTRA_LOG_INFO(g_logger) << "doing local service: Register";
-        ULTRA_LOG_INFO(g_logger)
-        "id:" << id << "name:" << name << " pwd:" << pwd;
+        ULTRA_LOG_INFO(g_logger) << "id:" << id << "name:" << name << " pwd:" << pwd;
         return true;
     }
 
