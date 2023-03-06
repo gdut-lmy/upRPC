@@ -12,6 +12,8 @@
 class RpcServer : public ultra::TcpServer {
 public:
 
+    typedef std::shared_ptr<RpcServer> ptr;
+
     explicit RpcServer(ultra::IOManager *worker = ultra::IOManager::GetThis(),
                        ultra::IOManager *accept_worker = ultra::IOManager::GetThis());
 

@@ -7,7 +7,7 @@
 
 #include <google/protobuf/service.h>
 
-class rpcChannel : public google::protobuf::RpcChannel {
+class upRpcChannel : public google::protobuf::RpcChannel {
 public:
     void CallMethod(const google::protobuf::MethodDescriptor *method,
                     google::protobuf::RpcController *controller, const google::protobuf::Message *request,
