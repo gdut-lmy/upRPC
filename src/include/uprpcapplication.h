@@ -9,7 +9,6 @@
 
 #include "ultra.h"
 
-namespace uprpc {
     class UprpcApplication {
     public:
         UprpcApplication();
@@ -20,7 +19,7 @@ namespace uprpc {
     };
 
     typedef ultra::Singleton<UprpcApplication> UprpcApp;
-}
+
 
 
 #endif //UPRPC_UPRPCAPPLICATION_H

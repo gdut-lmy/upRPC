@@ -6,10 +6,6 @@
 #define UPRPC_RPCPROVIDER_H
 
 #include "google/protobuf/service.h"
-#include <muduo/net/TcpServer.h>
-#include <muduo/net/EventLoop.h>
-#include <muduo/net/InetAddress.h>
-#include <muduo/net/TcpConnection.h>
 #include <ultra.h>
 #include <string>
 #include <functional>
@@ -17,16 +13,15 @@
 #include <unordered_map>
 
 
-namespace uprpc {
+class RpcProvider {
+public:
+    //框架提供给外部使用，可以用来发布rpc方法的函数接口
+    void NotifyService(google::protobuf::Service *service); //多态，使用Service基类来指向传入的对象
 
-    class RpcProvider {
-    public:
-        //框架提供给外部使用，可以用来发布rpc方法的函数接口
-        void NotifyService(google::protobuf::Service *service); //多态，使用Service基类来指向传入的对象
+    void Run();
 
-        void Run();
-    };
-}
+
+};
 
 
 #endif //UPRPC_RPCPROVIDER_H

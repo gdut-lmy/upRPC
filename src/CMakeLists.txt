@@ -1,6 +1,7 @@
 set(SRC_LIST
         uprpcapplication.cpp
-        rpcprovider.cpp)
+        rpcprovider.cpp
+        rpcserver.cpp)
 
 add_library(uprpc ${SRC_LIST})
 
