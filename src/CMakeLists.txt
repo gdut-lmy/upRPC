@@ -1,9 +1,9 @@
 set(SRC_LIST
         uprpcapplication.cpp
-        rpcprovider.cpp
         rpcserver.cpp
         rpcheader.pb.cc
-        rpcchannel.cpp)
+        rpcchannel.cpp
+        zookeeperutil.cpp)
 
 add_library(uprpc ${SRC_LIST})
 
