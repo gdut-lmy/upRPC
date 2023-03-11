@@ -7,6 +7,7 @@
 
 #include "ultra.h"
 #include <google/protobuf/service.h>
+#include "zookeeperutil.h"
 
 
 class RpcServer : public ultra::TcpServer {
@@ -14,8 +15,8 @@ public:
 
     typedef std::shared_ptr<RpcServer> ptr;
 
-    explicit RpcServer(ultra::IOManager *worker = ultra::IOManager::GetThis(),
-                       ultra::IOManager *accept_worker = ultra::IOManager::GetThis());
+    RpcServer(ultra::IOManager *worker = ultra::IOManager::GetThis(),
+              ultra::IOManager *accept_worker = ultra::IOManager::GetThis());
 
     // 这里是框架提供给外部使用的，可以发布rpc方法的函数接口
 
@@ -27,7 +28,7 @@ public:
     //框架提供给外部使用，可以用来发布rpc方法的函数接口
     void NotifyService(google::protobuf::Service *service); //多态，使用Service基类来指向传入的对象
 
-    void Run();
+    bool start() override;
 
 
 private:
@@ -42,6 +43,9 @@ private:
 
     //Closure的回调操作
     void sendRpcResponse(ultra::Socket::ptr &client, google::protobuf::Message *response);
+
+
+private:
 };
 
 

@@ -1,5 +1,4 @@
 set(SRC_LIST
-        uprpcapplication.cpp
         rpcserver.cpp
         rpcheader.pb.cc
         rpcchannel.cpp
