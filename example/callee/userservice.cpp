@@ -69,32 +69,20 @@ public:
 
 void run() {
 
-/*    std::string ip = rpc_server_ip->getValue();
-    uint16_t port = rpc_server_port->getValue();
-
-    std::string ip_port = ip + ":" + std::to_string(port);*/
 
     RpcServer::ptr rpcServer(new RpcServer);
-
-/*    auto rpcAddress = ultra::Address::LookupAny("127.0.0.1:12345");
-
-    ULTRA_ASSERT(rpcAddress);
-
-    while (!rpcServer->bind(rpcAddress)) {
-        sleep(2);
-    }
-
-    ULTRA_LOG_INFO(g_logger) << "bind success " << rpcServer->getName();*/
 
     rpcServer->NotifyService(new UserService);
 
     rpcServer->start();
 
-    std::cout << "after start" << std::endl;
 }
 
 
 int main(int argc, char *argv[]) {
+
+    ultra::EnvMgr::GetInstance()->init(argc, argv);
+    ultra::Config::LoadFromConfDir(ultra::EnvMgr::GetInstance()->getConfigPath());
 
     ultra::IOManager iom(1, true, "main");
     iom.schedule(&run);

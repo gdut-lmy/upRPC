@@ -147,7 +147,7 @@ bool RpcServer::start() {
         sleep(2);
     }
 
-    ULTRA_LOG_INFO(g_logger) << "bind success " << this->getName();
+    ULTRA_LOG_INFO(g_logger) << "bind success " << this->getName() << ip_port;
 
 
     m_ioWorker->schedule([this] {

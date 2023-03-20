@@ -1,7 +1,0 @@
-rpcServer:
-  port: 12345
-  ip: 127.0.0.1
-zookeeper:
-  port: 2181
-  ip: 127.0.0.1
-
