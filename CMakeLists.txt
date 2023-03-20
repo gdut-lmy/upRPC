@@ -17,6 +17,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic -fPIC")
 # -Wno-deprecated-declarations: 不要警告使用带deprecated属性的变量，类型，函数
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-function -Wno-builtin-macro-redefined -Wno-deprecated -Wno-deprecated-declarations")
 
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
+# 设置项目库文件输出的路径
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 include_directories(/usr/local/protobuf/include)
 
@@ -33,7 +37,7 @@ add_subdirectory(example)
 
 
 
-set(TEST_LIB_SRC
+#[[set(TEST_LIB_SRC
         test/test.pb.cc)
 
 add_library(test1 SHARED ${TEST_LIB_SRC})
@@ -54,9 +58,5 @@ ultra_add_executable(test_ultra "test/test_ultra.cpp" test1 "${LIBS}")
 
 add_executable(test_proto test/test_proto.cpp test/test.pb.cc)
 
-target_link_libraries(test_proto /home/ubuntu/projects/ultraServer/lib/libultra.so pthread protobuf dl yaml-cpp)
+target_link_libraries(test_proto /home/ubuntu/projects/ultraServer/lib/libultra.so pthread protobuf dl yaml-cpp)]]
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
-# 设置项目库文件输出的路径
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

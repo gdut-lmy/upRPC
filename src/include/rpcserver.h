@@ -15,10 +15,9 @@ public:
 
     typedef std::shared_ptr<RpcServer> ptr;
 
-    RpcServer(ultra::IOManager *worker = ultra::IOManager::GetThis(),
-              ultra::IOManager *accept_worker = ultra::IOManager::GetThis());
+    explicit RpcServer(ultra::IOManager *worker = ultra::IOManager::GetThis(),
+                       ultra::IOManager *accept_worker = ultra::IOManager::GetThis());
 
-    // 这里是框架提供给外部使用的，可以发布rpc方法的函数接口
 
     void handleClient(ultra::Socket::ptr client) override;
 
