@@ -41,7 +41,7 @@
 
 ## RPC框架流程图
 
-![Untitled](resource/Untitled%201.png)
+![Untitled](resource/RPC流程图.png)
 
 # zookeeper
 
@@ -65,7 +65,7 @@ zookeeper从设计模式的角度来理解：是一个基于观察者模式设�
 
 zookeeper的数据模型的结构与Unix文件系统很相似，整体上可以看做是一棵树，每个节点称作一个ZNode。每个ZNode默认能存储1MB的数据，每个ZNode都可以通过其路径唯一标识。
 
-![Untitled](resource/Untitled%202.png)
+![Untitled](resource/Znode节点.png)
 
 ### 节点类型
 
